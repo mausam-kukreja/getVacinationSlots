@@ -1,0 +1,2 @@
+[2021-05-16 01:36:54.170] [sharedprocess] [info] main {"machineId":"72ef3c3912f1def4c41a46a13295764fe620eecaa420095e8eaac7009c68b9cf","windowId":2}
+[2021-05-16 01:36:54.205] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/private/var/www/cron-jobs-node/~/.vscode-root/User/snippets'

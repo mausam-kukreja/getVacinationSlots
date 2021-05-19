@@ -1,0 +1,19 @@
+{
+  "name": "cron-jobs-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vonage/server-sdk": "^2.10.8",
+    "express": "^4.17.1",
+    "node-cron": "^2.0.3",
+    "twitter-lite": "^1.1.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
