@@ -1,4 +1,5 @@
 const twitter = require('twitter-lite');
+const cron = require('node-cron');
 
 const client = new twitter({
     subdomain: "api", 
@@ -13,6 +14,7 @@ const express = require('express');
 app = express();
 const https = require('https');
     let districts = [{district_id: 276, district_name: "Bangalore Rural"},{district_id: 265, district_name: "Bangalore Urban"}, {district_id: 294, district_name: "BBMP"}];
+    cron.schedule('* * * * * *', function() {
     const date = new Date();
     let datestr = date.getDate() + '-0' + parseInt(date.getMonth() + 1) + '-' + date.getFullYear();    
     districts.map((i, k) => {
@@ -28,12 +30,14 @@ const https = require('https');
                         let centers = JSON.parse(data).centers;
                         centers.map((i1, k1) => {
                             let centerName = i1.name;
+                            let pincode = i1.pincode;
                             i1.sessions.map((i2, k2) => {
-                                let message = `${i2.available_capacity} ${i2.vaccine} shots available for ${i2.min_age_limit}+ at ${centerName}, ${districtName} - Go Grab it`;
-                               if (i2.available_capacity > 0 && i2.vaccine === 'COVAXIN' && i2.min_age_limit === 18) {
-                                    client.post('statuses/update', { status: message }).then(result => {
-                                        console.log('You successfully tweeted this : "' + result.text + '"');
-                                      }).catch(console.error);
+                            let message = `Total ${i2.available_capacity} (Dose 1 - ${i2.available_capacity_dose1} , Dose 2 - ${i2.available_capacity_dose2}) ${i2.vaccine} shots available for ${i2.min_age_limit}+ at ${centerName}, ${districtName}, ${pincode}`;
+                            console.log(message);
+                               if (i2.available_capacity > 0  && i2.min_age_limit !== 45) {
+                                     client.post('statuses/update', { status: message }).then(result => {
+                                         console.log('You successfully tweeted this : "' + result.text + '"');
+                                       }).catch(console.error);
 }
 
                             });
@@ -46,4 +50,5 @@ const https = require('https');
                 console.log("Error: " + err.message);
             });
         });
+    });
 app.listen(3000);
