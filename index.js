@@ -32,7 +32,7 @@ const https = require('https');
                             let centerName = i1.name;
                             let pincode = i1.pincode;
                             i1.sessions.map((i2, k2) => {
-                            let message = `Total ${i2.available_capacity} (Dose 1 - ${i2.available_capacity_dose1} , Dose 2 - ${i2.available_capacity_dose2}) ${i2.vaccine} shots available for ${i2.min_age_limit}+ at ${centerName}, ${districtName}, ${pincode}`;
+                            let message = `#vaccine #VaccineFor18Plus #Karnataka #CovidHelp Total ${i2.available_capacity} (Dose 1 - ${i2.available_capacity_dose1} , Dose 2 - ${i2.available_capacity_dose2}) ${i2.vaccine} shots available for ${i2.min_age_limit}+ at ${centerName}, ${districtName}, ${pincode}`;
                                if (i2.available_capacity > 0  && i2.min_age_limit !== 45) {
                                      client.post('statuses/update', { status: message }).then(result => {
                                          console.log('You successfully tweeted this : "' + result.text + '"');
