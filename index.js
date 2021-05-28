@@ -13,7 +13,7 @@ const client = new twitter({
 const express = require('express');
 app = express();
 const https = require('https');
-    let districts = [{district_id: 276, district_name: "Bangalore Rural"},{district_id: 265, district_name: "Bangalore Urban"}, {district_id: 294, district_name: "BBMP"}];
+    let districts = [{district_id: 276, district_name: "Bangalore Rural"},{district_id: 265, district_name: "Bangalore Urban"}, {district_id: 294, district_name: "BBMP"},{district_id: 330, district_name: "Singrauli"}];
     cron.schedule('* * * * * *', function() {
     const date = new Date();
     let datestr = date.getDate() + '-0' + parseInt(date.getMonth() + 1) + '-' + date.getFullYear();    
